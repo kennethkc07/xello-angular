@@ -81,6 +81,12 @@ export class TooltipDirective {
         this.createTooltip();
     }
 
+    @HostListener('window:keydown', ['$event'])
+    keyboardInput(event: KeyboardEvent) {
+        if (event.keyCode == 27) {
+            this.destroy();
+        }
+    }
     //Angular Listener that picks click events registerd with this directive and executes behaviour
     @HostListener('mouseout')
     mouseout() {
